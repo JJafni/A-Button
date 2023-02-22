@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Image Button</title>
+	<style>
+		#btn {
+			display: block;
+			margin: 0 auto;
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			background-color: #3498db;
+			color: #fff;
+			font-size: 20px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 150px;
+			cursor: pointer;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="btn">Press me for a random image</div>
+	<script>
+		var images = [
+			"image1.jpg",
+			"image2.jpg",
+			"image3.jpg",
+			"image4.jpg",
+			"image5.jpg"
+		];
+
+		var btn = document.getElementById("btn");
+		var previousImage = null;
+
+		btn.addEventListener("click", function() {
+			if (previousImage !== null) {
+				document.body.removeChild(previousImage);
+			}
+			var randomIndex = Math.floor(Math.random() * images.length);
+			var img = new Image();
+			img.src = images[randomIndex];
+			document.body.appendChild(img);
+			previousImage = img;
+			setTimeout(function() {
+				document.body.removeChild(img);
+				previousImage = null;
+			}, 1000);
+		});
+	</script>
+</body>
+</html>
