@@ -1,58 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Random Image Button</title>
-	<style>
-		#btn {
-			display: block;
-			margin: 0 auto;
-			width: 150px;
-			height: 150px;
-			border-radius: 50%;
-			background-color: #3498db;
-			color: #fff;
-			font-size: 20px;
-			font-weight: bold;
-			text-align: center;
-			line-height: 150px;
-			cursor: pointer;
-		}
-		img {
-			display: block;
-			margin: 0 auto;
-			max-width: 100%;
-			height: auto;
-		}
-	</style>
+	<script src="https://cdn.tailwindcss.com"></script>
+  <title>Random Emoji Button</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    #btn {
+      display: block;
+      margin: 0 auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 60px;
+      text-align: center;
+      line-height: 150px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    #btn:hover {
+      transform: scale(1.2);
+    }
+    #btn:active {
+      transform: scale(0.8);
+    }
+  </style>
 </head>
 <body>
-	<div id="btn">Press me for a random image</div>
-	<script>
-		var images = [
-			"image1.jpg",
-			"image2.jpg",
-			"image3.jpg",
-			"image4.jpg",
-			"image5.jpg"
-		];
+  <div class="bg-red-500 shadow-lg shadow-red-500/50" id="btn">😀</div>
+  <script>
+    var emojis = [
+      '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', 
+      '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', 
+      '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '😣', 
+      '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '😱', 
+      '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬'
+    ];
 
-		var btn = document.getElementById("btn");
-		var previousImage = null;
+    var btn = document.getElementById("btn");
 
-		btn.addEventListener("click", function() {
-			if (previousImage !== null) {
-				document.body.removeChild(previousImage);
-			}
-			var randomIndex = Math.floor(Math.random() * images.length);
-			var img = new Image();
-			img.src = images[randomIndex];
-			document.body.appendChild(img);
-			previousImage = img;
-			setTimeout(function() {
-				document.body.removeChild(img);
-				previousImage = null;
-			}, 1000);
-		});
-	</script>
+    btn.addEventListener("click", function() {
+      var randomIndex = Math.floor(Math.random() * emojis.length);
+      btn.innerHTML = emojis[randomIndex];
+    });
+  </script>
 </body>
 </html>
